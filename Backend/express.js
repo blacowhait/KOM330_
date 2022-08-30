@@ -16,10 +16,9 @@ module.exports = async function (app) {
     app.get('/', (_req, res) => res.send('the server is run!'))
     app.use("/api", apiRoutes);
 
-/*    // catch 404 and forward to error handler
+    // catch 404 and forward to error handler
     app.use(require('./middleware/catch404'));
 
     // error handler
     app.use(require('./middleware/errorHandler'));
-}*/
 }
