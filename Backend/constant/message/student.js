@@ -1,0 +1,6 @@
+exports.STUDENT_NOT_FOUND = "Data siswa tidak ditemukan"
+exports.STUDENT_FINAL = "data siswa sudah final"
+exports.STUDENT_UPDATE_FAIL = "Gagal mengupdate data siswa"
+exports.STUDENT_DELETE_FAIL = "Gagal menghapus data siswa"
+exports.STUDENT_DELETE_SUCCESS = "Berhasil menghapus data siswa"
+exports.STUDENT_HAS_TEAM = "siswa sudah memiliki tim"

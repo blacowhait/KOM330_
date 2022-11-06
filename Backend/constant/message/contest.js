@@ -1,0 +1,7 @@
+exports.CONTEST_NOT_FOUND = "Kontes tidak ditemukan"
+exports.DELETE_CONTEST_FAIL = "Gagal menghapus kontes"
+exports.TEAM_CONTEST_FINAL = "ada tim yang sudah final"
+exports.DELETE_CONTEST_SUCCESS = "Berhasil menghapus kontes"
+exports.DATA_INCOMPLETE = "Beberapa data yang dibutuhkan tidak diberikan"
+exports.DOESNT_HAVE_ACCESS = "Anda tidak memiliki izin untuk mengakses resource ini"
+exports.CONTEST_CLOSED = "Pendaftaran kontes sudah ditutup"
