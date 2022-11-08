@@ -1,43 +1,46 @@
 import { Fragment } from "react";
-
-async function login() {
-  const URL = "https://truends.com/api/v1/login";
-  await fetch(URL, {
-    method: "GET",
-  })
-    .then((response) => response.json)
-    .then((data) => console.log(data));
-}
+import { render } from "react-dom";
+import Header from "../components/Navbar";
+import { SectionOne } from "../components/SectionOne";
 
 function HomePage() {
+  const click = [
+    {
+      title: "Pemantauan Dana",
+      icon: <embed src="/svg/one.svg"></embed>,
+    },
+    {
+      title: "RAB",
+      icon: <embed src="/svg/two.svg"></embed>,
+    },
+    {
+      title: "Kelengkapan SPJ",
+      icon: <embed src="/svg/three.svg"></embed>,
+    },
+  ];
   return (
     <Fragment>
-      <div className="text-lg flex flex-col w-screen h-screen justify-center items-center ">
-        <div className="w-2/6 h-7/12 z-40 ">
-          <form method="GET" action="" className="grid grid-rows-6 gap-2 ">
-            <label for="email" className="w-full self-end font-semibold text-2xl">
-              Email/Username{" "}
-            </label>
-            <input type="text" id="email" name="email" className="w-full bg-gray-200 border-2 border-gray-300 rounded-full px-5 h-14" required autoFocus></input>
-            <label for="password" className="w-full self-end font-semibold text-2xl">
-              Password{" "}
-            </label>
-            <input type="text" id="password" name="password" className="w-full bg-gray-200 border-2 border-gray-300 rounded-full px-5 h-14" required autoFocus></input>
-            <div className="font-semibold text-2xl mt-3">
-              Don’t have an account? <a href="#">Sign Up</a>
-            </div>
-
-            <input type="button" onClick={login} className="w-full h-16 text-white text-2xl bg-blue-900 border-2 border-gray-300 rounded-full px-5 h-14" value="Login"></input>
-          </form>
+      <script src="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossOrigin="anonymous"></script>
+      <Header title="" role="adkesmah" />
+      <div className="text-lg flex flex-col w-screen h-screen justify-center items-center pt-14">
+        <embed className="w-full fixed z-0 mt-14" src="/svg/index.svg"></embed>
+        <div className="container h-auto w-full mt-20 px-9 flex flex-col justify-between">
+          <SectionOne />
+          <div className="flex flex-row justify-self-end justify-evenly w-full h-1/3 my-5 mt-20 items-center gap-x-10">
+            {click.map((data, index) => (
+              <button className="bg-gray-200 hover:bg-gray-500 drop-shadow-md rounded-md grid grid-rows-3 justify-center items-center gap-20 p-10 w-44 h-44 grid-flow-cols">
+                <div className="text-center font-semibold">{data.title}</div>
+                <div className="justify-self-center">{data.icon}</div>
+              </button>
+            ))}
+          </div>
         </div>
-        <p className="font-semibold text-2xl w-3/6 mt-10 z-40 text-center">
-          <strong>Truends</strong> adalah sebuah website yang berfungsi <br></br> untuk mengelola laporan keuangan BEM FMIPA IPB.
-        </p>
-        <embed className="w-full fixed border-4 border-red-900 mt-14 " src="svg/title.svg"></embed>
       </div>
+      <footer className="mx-32">
+        <embed src="/svg/mainPageIcon.svg"></embed>
+      </footer>
       <script src="https://cdn.tailwindcss.com"></script>
     </Fragment>
   );
 }
-
 export default HomePage;
