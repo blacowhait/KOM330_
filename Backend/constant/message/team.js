@@ -1,0 +1,7 @@
+exports.TEAM_NOT_FOUND = "Tim tidak ditemukan"
+exports.TEAM_CREATE_FAIL = "Gagal membuat tim"
+exports.TEAM_PAID = "tim sudah bayar"
+exports.TEAM_DELETE_FAIL = "Gagal menghapus tim"
+exports.TEAM_DELETE_SUCCESS = "Berhasil menghapus tim"
+exports.TEAM_FINAL = "ada tim yang sudah final"
+exports.TEAM_EMPTY = "Tidak ada ID tim yang diberikan"

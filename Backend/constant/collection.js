@@ -1,0 +1,2 @@
+// captain
+exports.USER = "user"

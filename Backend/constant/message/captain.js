@@ -1,0 +1,1 @@
+exports.CAPTAIN_NOT_FOUND = "Ketua tidak ditemukan"

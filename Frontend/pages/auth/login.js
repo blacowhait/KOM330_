@@ -1,15 +1,32 @@
 import { Fragment } from "react";
+import { useEffect, useState } from "react";
 
-async function login() {
-  const URL = "https://truends.com/api/v1/login";
-  await fetch(URL, {
-    method: "GET",
-  })
-    .then((response) => response.json)
-    .then((data) => console.log(data));
-}
+// async function login() {
+//   const URL = "https://localhost:3000/api/auth/registration";
+//   const data ={
+//     "name": "wawa",
+//     "email": "wawa@wawa.com",
+//     "password": "Wawawawa1"
+//   }
+//   await fetch(URL, {
+//     method: "POST",
+//   })
+//     .then((response) => response.json)
+//     .then((data) => console.log(data));
+// }
 
 function Login() {
+  const URL = "https://localhost:3000/api/auth/login";
+  const [data] = useState();
+  useEffect(() => {
+    fetch(URL, {
+      method: "POST",
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json)
+      .then((data) => console.log(data))
+      .catch((error) => console.log(error));
+  });
   return (
     <Fragment>
       <div className="text-lg flex flex-col w-screen h-screen justify-center items-center">
@@ -27,7 +44,7 @@ function Login() {
               Don’t have an account? <a href="#">Sign Up</a>
             </div>
 
-            <input type="button" onClick={login} className="w-full h-16 text-white text-2xl bg-blue-900 border-2 border-gray-300 rounded-full px-5 h-14" value="Login"></input>
+            <input type="button" onClick={() => setData} className="w-full h-16 text-white text-2xl bg-blue-900 border-2 border-gray-300 rounded-full px-5 h-14" value="Login"></input>
           </form>
         </div>
         <p className="font-semibold text-2xl w-3/6 mt-10 z-40 text-center">
