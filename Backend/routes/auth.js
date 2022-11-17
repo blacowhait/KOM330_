@@ -11,5 +11,6 @@ router.post(
   handler.Catcher(AuthController.userRegistration)
 )
 router.post("/login", validateBody(schemas.userLogin), handler.Catcher(AuthController.userLogin))
+router.get("/email/verify", handler.Catcher(AuthController.verifyEmail))
 
 module.exports = router
