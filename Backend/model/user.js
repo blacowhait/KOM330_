@@ -32,20 +32,6 @@ const UserSchema = new Schema({
 		type: Date,
 		required: true,
 		default: Date.now()
-	},
-	verifyEmailToken: {
-		type: String
-	},
-	isVerifiedEmail: {
-		type: Boolean,
-		default: false,
-		required: true
-	},
-	changeEmailToken: {
-		type: String
-	},
-	verifyEmailDate: {
-		type: Date
 	}
 });
 
