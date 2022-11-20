@@ -13,6 +13,8 @@ exports.CAPTAIN = "CaptainModel"
 // siswa
 exports.STUDENT = "StudentModel"
 
+exports.USER = "UserModel"
+
 // tim
 // exports.TEAM = "TeamModel"
 

@@ -1,4 +1,4 @@
-require("dotenv").config({ path: __dirname + "/.env.copy" });
+require("dotenv").config({ path: __dirname + "/.env" });
 const express = require("express");
 const app = require("./express");
 const db = require("./mongodb");

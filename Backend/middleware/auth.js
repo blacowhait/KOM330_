@@ -42,7 +42,7 @@ class JWtController {
     }
     static isDiv(req, res, next) {
         let { privilege } = req.decoded;
-        if (privilege === "divisi") next();
+        if ((privilege === "divisi")||(privilege === "pusat")) next();
         else return res.status(403).json({ message: "You do not have access to this resource" });
     }
     static isPst(req, res, next) {

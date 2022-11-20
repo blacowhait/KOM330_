@@ -1,5 +1,6 @@
 let joi = require('joi');
 const validateBody = require('../middleware/validator')
+const constant = require("../constant")
 
 module.exports = {
 	validateBody,
@@ -7,6 +8,7 @@ module.exports = {
         userRegistration: joi.object().keys({
             name: joi.string().min(2).max(50).required(),
             email: joi.string().email().trim().lowercase().required(),
+            dept: joi.string().required().valid(...constant.enum.dept),
             password: joi.string()
                 .required()
                 .min(8)
@@ -23,6 +25,10 @@ module.exports = {
         userLogin: joi.object().keys({
             email: joi.string().email().trim().lowercase().required(),
             password: joi.string().required()
+        }),
+        userPriv: joi.object().keys({
+            email: joi.string().email().trim().lowercase().required(),
+            title: joi.string().required()
         })
     }
 }

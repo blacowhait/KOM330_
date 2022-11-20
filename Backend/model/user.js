@@ -23,6 +23,10 @@ const UserSchema = new Schema({
 		type: String,
 		default: constant.enum.titleLower[0]
 	},
+	dept: {
+		type: String,
+		enum: [...constant.enum.dept, null]
+	},
 	createdAt: {
 		type: Date,
 		required: true,
@@ -32,6 +36,20 @@ const UserSchema = new Schema({
 		type: Date,
 		required: true,
 		default: Date.now()
+	},
+	verifyEmailToken: {
+		type: String
+	},
+	isVerifiedEmail: {
+		type: Boolean,
+		default: false,
+		required: true
+	},
+	changeEmailToken: {
+		type: String
+	},
+	verifyEmailDate: {
+		type: Date
 	}
 });
 
