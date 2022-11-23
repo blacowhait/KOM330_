@@ -3,8 +3,8 @@ const { Schema, model, SchemaTypes } = require('mongoose')
 
 const constant = require('../constant')
 
-const RabSchema = new Schema({
-	rabFile : {
+const SpjSchema = new Schema({
+	spjFile : {
 		type: String,
 		required: true
 	},
@@ -23,7 +23,7 @@ const RabSchema = new Schema({
 	},
 	status: {
 		type: String,
-		default: constant.enum.RabStatus[0]
+		default: constant.enum.SpjStatus[0]
 	},
 	notes: {
 		type: String
@@ -34,9 +34,9 @@ const RabSchema = new Schema({
 	}
 });
 
-RabSchema.set('toObject', { virtuals: true });
-RabSchema.set('toJSON', { virtuals: true });
-RabSchema.pre("save", async function (next) {
+SpjSchema.set('toObject', { virtuals: true });
+SpjSchema.set('toJSON', { virtuals: true });
+SpjSchema.pre("save", async function (next) {
 	try {
 		this.updatedAt = Date.now();
 		next();
@@ -46,7 +46,7 @@ RabSchema.pre("save", async function (next) {
 });
 
 module.exports = model(
-	constant.model.RAB,
-	RabSchema,
-	constant.collection.RAB
+	constant.model.SPJ,
+	SpjSchema,
+	constant.collection.SPJ
 );

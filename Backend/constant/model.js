@@ -14,6 +14,8 @@ exports.CAPTAIN = "CaptainModel"
 exports.STUDENT = "StudentModel"
 
 exports.USER = "UserModel"
+exports.RAB = "RabModel"
+exports.SPJ = "SpjModel"
 
 // tim
 // exports.TEAM = "TeamModel"

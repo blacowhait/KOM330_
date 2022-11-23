@@ -1,4 +1,4 @@
-const RabModel = require('../model/rab')
+const SpjModel = require('../model/spj')
 const UserModel = require('../model/user')
 
 const createError = require('http-errors');
@@ -6,12 +6,12 @@ const fs = require('fs')
 const constant = require("../constant")
 const { returnMessage } = require('../constant')
 
-class RabController {
-	static async inputRab (req, res) {
+class SpjController {
+	static async inputSpj (req, res) {
 		try {
 			const div = await UserModel.findOne({ _id: req.decoded.sub }).select('dept');
-			let rab = await RabModel.create({
-				rabFile: req.file.filename,
+			let spj = await SpjModel.create({
+				spjFile: req.file.filename,
 				name: req.body.name,
 				status: "WAIT",
 				div: div.dept
@@ -19,7 +19,7 @@ class RabController {
 
 			return res.status(200).json({
             	success: true,
-            	rab
+            	spj
             });
 		}
 		catch (e) {
@@ -30,12 +30,12 @@ class RabController {
 		}
 	}
 
-	static async showRab (req, res) {
+	static async showSpj (req, res) {
 		try {
 			const div = await UserModel.findOne({ _id: req.decoded.sub }).select('dept');
-			let rabs = await RabModel.find({ div: div.dept });
+			let spjs = await SpjModel.find({ div: div.dept });
 			console.log(div.dept)
-			return res.status(200).json({ rabs });
+			return res.status(200).json({ spjs });
 		}
 		catch (e) {
 			return res.status(500).json({
@@ -48,18 +48,18 @@ class RabController {
 	static async check (req,res) {
 		try {
 			let { id } = req.params;
-			const rab = await RabModel.findOne({ _id: id}).select('-createdAt');
-			if (!rab) {
-	            return next(createError(404, "rab not found"))
+			const spj = await SpjModel.findOne({ _id: id}).select('-createdAt');
+			if (!spj) {
+	            return next(createError(404, "spj not found"))
 	        }
 			let { title, notes } = req.value.body;
-			rab.title = title;
-			rab.notes = title;
-			rab.save();
+			spj.title = title;
+			spj.notes = title;
+			spj.save();
 
 			return res.status(200).json({
             	success: true,
-            	rab: rab.data
+            	spj: spj.data
             });
 		}
 		catch (e) {
@@ -70,12 +70,12 @@ class RabController {
 		}
 	}
 
-	static async showAllRab (req, res) {
+	static async showAllSpj (req, res) {
 		try {
-			const rab = await RabModel.find({});
+			const spj = await SpjModel.find({});
 			return res.status(200).json({
             	success: true,
-            	rab
+            	spj
             });
 		}
 		catch (e) {
@@ -87,4 +87,4 @@ class RabController {
 	}
 }
 
-module.exports = RabController;
+module.exports = SpjController;

@@ -10,8 +10,8 @@ module.exports = async function (app) {
     app.use(cors()); // enabling CORS
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
-/*    app.use(express.static(path.join(__dirname, 'public')));
-    app.use(express.static(path.join(__dirname, 'uploads')));*/
+    // app.use(express.static(path.join(__dirname, 'public')));
+    app.use(express.static(path.join(__dirname, 'uploads')));
 
     app.get('/', (_req, res) => res.send('the server is run!'))
     app.use("/api", apiRoutes);
