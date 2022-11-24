@@ -17,6 +17,15 @@ class Table extends Component {
         jumlahFile: `2`,
       },
     ];
+
+    this.dataRab = [
+      {
+        namaFile: "Rekapitulasi RAB",
+        tanggalUpload: "14 Januari 2022",
+        tanggalCek: "16 Januari 2022",
+      },
+    ];
+
     this.dataa = [
       {
         nama: "Transportasi panitia",
@@ -29,6 +38,7 @@ class Table extends Component {
         tipe: "JPG",
       },
     ];
+
     this.index = (
       <table className="w-full h-auto">
         <thead>
@@ -56,6 +66,7 @@ class Table extends Component {
         </tbody>
       </table>
     );
+
     this.detail = (
       <table className="w-full h-auto">
         <thead>
@@ -90,12 +101,70 @@ class Table extends Component {
         </tbody>
       </table>
     );
+
+    this.RabSiap = (
+      <table className="w-full h-auto">
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Nama file</th>
+            <th>Tanggal Upload</th>
+            <th>Tanggal Cek</th>
+            <th>Keterangan</th>
+          </tr>
+        </thead>
+        <tbody className="text-center align-top self-start">
+          {this.dataRab.map((data, index) => (
+            <tr>
+              <td>{index + 1}.</td>
+              <td>{data.namaFile}</td>
+              <td>{data.tanggalUpload}</td>
+              <td>{data.tanggalCek}</td>
+              <td>
+                <input type="button" className="w-1/2 h-8 text-white text-2 bg-blue-900 border-2 rounded-full" value="SIAP"></input>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    );
+
+    this.RabRevisi = (
+      <table className="w-full h-auto">
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Nama file</th>
+            <th>Tanggal Upload</th>
+            <th>Tanggal Cek</th>
+            <th>Keterangan</th>
+          </tr>
+        </thead>
+        <tbody className="text-center align-top self-start">
+          {this.dataRab.map((data, index) => (
+            <tr>
+              <td>{index + 1}.</td>
+              <td>{data.namaFile}</td>
+              <td>{data.tanggalUpload}</td>
+              <td>{data.tanggalCek}</td>
+              <td>
+                <input type="button" className="w-1/2 h-8 text-white text-2 bg-red-900 border-2 rounded-full" value="REVISI"></input>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    );
   }
   render() {
     if (this.props.title == "index") {
       return <Fragment>{this.index}</Fragment>;
     } else if (this.props.title == "detail") {
       return <Fragment>{this.detail}</Fragment>;
+    } else if (this.props.title == "RabSiap") {
+      return <Fragment>{this.RabSiap}</Fragment>;
+    } else if (this.props.title == "RabRevisi") {
+      return <Fragment>{this.RabRevisi}</Fragment>;
     }
   }
 }

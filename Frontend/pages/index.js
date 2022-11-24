@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import { render } from "react-dom";
 import Header from "../components/Navbar";
 import { SectionOne } from "../components/SectionOne";
+import UploadFile from "./rab/UploadFile";
 
 function HomePage() {
   const click = [
