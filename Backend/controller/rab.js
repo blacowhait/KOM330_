@@ -10,8 +10,10 @@ class RabController {
 	static async inputRab (req, res) {
 		try {
 			const div = await UserModel.findOne({ _id: req.decoded.sub }).select('dept');
+			const nameFile = req.file.filename;
+
 			let rab = await RabModel.create({
-				rabFile: req.file.filename,
+				rabFile: nameFile,
 				name: req.body.name,
 				status: "WAIT",
 				div: div.dept

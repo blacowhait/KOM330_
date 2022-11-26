@@ -7,7 +7,7 @@ const constant = require("../constant")
 const { returnMessage } = require('../constant')
 
 class UserController {
-    static async create(name, email, password, verifyEmailToken, dept) {
+    static async create(name, email, password, dept, verifyEmailToken) {
         try {
             // Make hashed password
             const salt = await bcrypt.genSalt(10);

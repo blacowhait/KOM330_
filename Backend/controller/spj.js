@@ -10,8 +10,10 @@ class SpjController {
 	static async inputSpj (req, res) {
 		try {
 			const div = await UserModel.findOne({ _id: req.decoded.sub }).select('dept');
+			const nameFile = req.file.filename;
+
 			let spj = await SpjModel.create({
-				spjFile: req.file.filename,
+				spjFile: nameFile,
 				name: req.body.name,
 				status: "WAIT",
 				div: div.dept
