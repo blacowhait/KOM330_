@@ -68,7 +68,7 @@ class AuthController {
     static async userLogin(req, res) {
         try {
             let { email, password } = req.value.body;
-            UserModel.findOne({ email }, '_id name email title isVerifiedEmail', async function (err, user) {
+            UserModel.findOne({ email }, '_id name email title dept isVerifiedEmail', async function (err, user) {
                 // console.log(user)
                 if (!user) {
                     return res.status(404).json({ message: `${returnMessage.auth.LOGIN_FAIL}, ${returnMessage.auth.EMAIL_NOT_FOUND}` });

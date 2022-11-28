@@ -6,6 +6,7 @@ exports.signTokenToDiv = function (user) {
     return JWT.sign({
         iss: 'Truends',
         sub: user._id,
+        div: user.dept,
         iat: new Date().getTime(),
         exp: new Date().setDate(new Date().getDate() + 5),
         privilege: "divisi"
@@ -15,7 +16,8 @@ exports.signTokenToPst= function(user) {
     if (user == null) return null;
     return JWT.sign({
         iss: 'Truends',
-        sub: user,
+        sub: user._id,
+        div: user.dept,
         iat: new Date().getTime(),
         exp: new Date().setDate(new Date().getDate() + 5),
         privilege: "pusat"
