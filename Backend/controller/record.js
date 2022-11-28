@@ -55,6 +55,68 @@ class RecordController {
             });
 		}
 	}
+
+	static async showInfo(req, res) {
+		try {
+			const deptRecords = await RecordModel.find({ div: req.decoded.div });
+			let masuk = 0;
+			let keluar = 0;
+			let selisih = 0;
+			const data = new Array();
+
+			for (const deptRecord of deptRecords) {
+				console.log(deptRecord)
+				if (deptRecord.rType == '+') {
+					masuk += deptRecord.total;
+				}
+				else if (deptRecord.rType == '-') {
+					keluar += deptRecord.total;
+				}
+				else {
+					return res.status(500).json({
+						success: false,
+						message: "error when ngitung"
+					});
+				}
+			}
+
+			selisih = masuk - keluar;
+			data.push({
+				"label": "pemasukan",
+				"jumlah": masuk
+			})
+			data.push({
+				"label": "pengeluaran",
+				"jumlah": keluar
+			})
+			data.push({
+				"label": "selisih",
+				"jumlah": selisih
+			})
+			return res.status(200).json({ data });
+		}
+		catch (e) {
+			return res.status(500).json({
+                success: false,
+                message: e.message
+            });
+		}
+	}
+
+	static async getDept(req, res) {
+		try {
+			let { dept } = req.params;
+			let records = await RecordModel.find({ div: dept });
+			console.log(dept)
+			return res.status(200).json({ records });
+		}
+		catch (e) {
+			return res.status(500).json({
+                success: false,
+                message: e.message
+            });
+		}
+	}
 }
 
 module.exports = RecordController;
