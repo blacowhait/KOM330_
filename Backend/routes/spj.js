@@ -12,5 +12,6 @@ router.post("/add", auth.checkToken, auth.isDiv, makeMulter('uploads/spj/').sing
 router.get("/show", auth.checkToken, auth.isDiv, handler.Catcher(SpjController.showSpj));
 router.post("/check/:id", auth.checkToken, auth.isPst, validateBody(schemas.check), handler.Catcher(SpjController.check));
 router.get("/showAll", auth.checkToken, auth.isPst, handler.Catcher(SpjController.showAllSpj));
+router.get("/download/:id", auth.checkToken, auth.isDiv, handler.Catcher(SpjController.downloadSpj));
 
 module.exports = router;

@@ -12,5 +12,6 @@ router.post("/add", auth.checkToken, auth.isDiv, makeMulter('uploads/rab/').sing
 router.get("/show", auth.checkToken, auth.isDiv, handler.Catcher(RabController.showRab));
 router.post("/check/:id", auth.checkToken, auth.isPst, validateBody(schemas.check), handler.Catcher(RabController.check));
 router.get("/showAll", auth.checkToken, auth.isPst, handler.Catcher(RabController.showAllRab));
+router.get("/download/:id", auth.checkToken, auth.isDiv, handler.Catcher(RabController.downloadRab));
 
 module.exports = router;
