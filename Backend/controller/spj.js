@@ -87,6 +87,29 @@ class SpjController {
             });
 		}
 	}
+
+	static async downloadSpj (req,res) {
+		try {
+			let { id } = req.params;
+			const spj = await SpjModel.findOne({ _id: id}).select('spjFile');
+			if (!spj) {
+	            return next(createError(404, "spj not found"))
+	        }
+			console.log(spj.spjFile);
+
+			return res.download("uploads/spj/" + spj.spjFile, function (err) {
+				if (err) {
+						console.log(err);
+				}
+			});
+		}
+		catch (e) {
+			return res.status(500).json({
+                success: false,
+                message: e.message
+            });
+		}
+	}
 }
 
 module.exports = SpjController;

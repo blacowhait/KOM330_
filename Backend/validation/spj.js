@@ -9,8 +9,8 @@ module.exports = {
 			status: joi.string().required(),
 			notes: joi.string().required()
 		}),
-		inputRab: joi.object().keys({
-			rabFile: joi.allow("", "undefined"),
+		inputSpj: joi.object().keys({
+			spjFile: joi.allow("", "undefined"),
 			name: joi.string().required()
 		}),
 	}
