@@ -1,22 +1,9 @@
 import { Fragment, Component } from "react";
+import Link from "next/link";
 
 class Table extends Component {
   constructor(props) {
     super(props);
-    this.data = [
-      {
-        nama: `Charity Concert`,
-        tgl: `6 Juli 2022`,
-        penanggungJawab: `Dwi Muharni`,
-        jumlahFile: `2`,
-      },
-      {
-        nama: `Open House Kost`,
-        tgl: `12 Juli 2022`,
-        penanggungJawab: `Reza Rachmalia`,
-        jumlahFile: `2`,
-      },
-    ];
 
     this.dataRab = [
       {
@@ -39,30 +26,29 @@ class Table extends Component {
       },
     ];
 
-    this.index = (
+    this.spj = (
       <table className="w-full h-auto">
         <thead>
           <tr>
             <th>No.</th>
             <th>Nama Proker</th>
-            <th>Tanggal Pelaksanaan</th>
-            <th>Penanggung Jawab</th>
-            <th>Jumlah File</th>
+            <th>Tanggal Upload</th>
+            <th>Status</th>
+            <th>Komen</th>
             <th></th>
             <th></th>
             <th></th>
           </tr>
         </thead>
         <tbody className="text-center align-top self-start">
-          {this.data.map((data, index) => (
-            <tr>
-              <td>{index + 1}</td>
-              <td>{data.nama}</td>
-              <td>{data.tgl}</td>
-              <td>{data.penanggungJawab}</td>
-              <td>{data.jumlahFile}</td>
-            </tr>
-          ))}
+          {this.props.chidren}
+          <tr>
+            <td>
+              <Link href="/spj/upload">
+                <button className="bg-gray-500 px-2 text-white">&#43;</button>
+              </Link>
+            </td>
+          </tr>
         </tbody>
       </table>
     );
@@ -157,8 +143,8 @@ class Table extends Component {
     );
   }
   render() {
-    if (this.props.title == "index") {
-      return <Fragment>{this.index}</Fragment>;
+    if (this.props.title == "spj") {
+      return <Fragment>{this.spj}</Fragment>;
     } else if (this.props.title == "detail") {
       return <Fragment>{this.detail}</Fragment>;
     } else if (this.props.title == "RabSiap") {

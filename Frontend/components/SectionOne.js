@@ -1,4 +1,4 @@
-export const SectionOne = (props) => {
+export const SectionOne = () => {
   const data = [
     {
       title: "Pemasukan",
@@ -40,7 +40,7 @@ export const SectionOne = (props) => {
           <div className="row-span-3 col-span-1 w-20 h-20 self-center mx-auto bg-white rounded-full grid justify-center items-center">{data.icon}</div>
           <div className="font-medium text-xl">{data.title}</div>
           <div className=" row-span-2 flex items-center">
-            <strong className="text-2xl">Rp 9,000,000,-</strong>
+            <strong className="text-2xl">Rp 0,-</strong>
           </div>
         </div>
       ))}

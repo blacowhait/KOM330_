@@ -1,16 +1,30 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
-import { NextCookies } from "next/dist/server/web/spec-extension/cookies";
+import jwt_decode from "jwt-decode";
+import { NextRequest, NextResponse } from "next/server";
 
-export function middleware(req: NextRequest) {
-  if (req.nextUrl.pathname.startsWith("/auth/login")) {
-  }
-  if (req.nextUrl.pathname.startsWith("/")) {
-    console.log("Cookies: ", req.cookies.get("token"));
-    if (req.cookies.get("token")) {
-      console.log(req.cookies.get("token"));
-      NextResponse.next();
+export default function middleware(req: NextRequest) {
+  const uri = req.nextUrl.pathname;
+  if (uri.startsWith("/auth")) {
+    console.log(req.cookies.has("token"));
+    if (req.cookies.has("token")) {
+      const url = req.nextUrl.clone();
+      url.pathname = "/";
+      return NextResponse.redirect(url);
     }
-    NextResponse.redirect(process.env.NEXT_PUBLIC_FRONTEND_URL + "/auth/login");
   }
+  if (uri === "/" || uri.startsWith("/spj") || uri.startsWith("/rab") || uri.startsWith("/cashflow")) {
+    if (!req.cookies.has("token")) {
+      const url = req.nextUrl.clone();
+      url.pathname = "/auth/login";
+      return NextResponse.redirect(url);
+    }
+  }
+  if (uri === "/admin" && req.cookies.has("token")) {
+    const tkn = jwt_decode(req.cookies.get("token"));
+    if (tkn.privilege !== "pusat") {
+      const url = req.nextUrl.clone();
+      url.pathname = "/";
+      return NextResponse.redirect(url);
+    }
+  }
+  return NextResponse.next();
 }
