@@ -31,8 +31,51 @@ Tujuan dari project ini adalah mengembangkan perangkat lunak untuk mengelola lap
 
 ## Lingkungan Pengembangan
 
-Processor : Intel Core 15-10300H 
-VGA : NVIDIA  GeForce GTX 1650 Ti
-Memory : 8GB
-OS : Windows 11 Home Student
+- Processor : Intel Core 15-10300H 
+- VGA : NVIDIA  GeForce GTX 1650 Ti
+- Memory : 8GB
+- OS : Windows 11 Home Student
+
+## Metodologi
+
+Metode yang digunakan adalah teknik scrum, yaitu metode dengan patokan per minggu. Disini kami harus menetapkan pencapaian yang akan kami capai dalam 1 minggu, lalu menentukan selanjutnya akan mengerjakan apa.
+
+## Fitur
+
+<table>
+    <thead>
+        <tr>
+            <th></th>
+            <th>Fitur</th>
+            <th>Kegunanaan/Fungsi</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Pemantauan Dana</td>
+            <td>Melihat cash flow/keadaan dana organisasi.</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Pencatatan Dana</td>
+            <td>Melaporkan keadaan dana setiap divisi/proker kepada penanggung jawab umum.</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Pengajuan RAB</td>
+            <td>Sebelum diajukan ke pihak dekanat, setiap RAB akan diperiksa terlebih dahulu oleh penanggung jawab umum.</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Pemberian Label RAB</td>
+            <td>Setelah diperiksa oleh penanggung jawab umum, RAB akan diberikan label Siap (siap dikirimkan ke dekanat) dan Revisi (ada yang harus diubah di RAB, dan penanggung jawab memberikan note apa yang harus diubah).</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Pengumpulan Kelengkapan SPJ</td>
+            <td>Setiap divisi/proker akan mengumpulkan kebutuhan SPJ seperti nota, kwitansi, daftar hadir, dan surat undangan.</td>
+        </tr>
+    
+</table>
 
