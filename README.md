@@ -28,3 +28,11 @@ Tujuan dari project ini adalah mengembangkan perangkat lunak untuk mengelola lap
 - Pengajuan Dana Talang
 - Kelengkapan SPJ
 - Cashflow
+
+## Lingkungan Pengembangan
+
+Processor : Intel Core 15-10300H 
+VGA : NVIDIA  GeForce GTX 1650 Ti
+Memory : 8GB
+OS : Windows 11 Home Student
+
