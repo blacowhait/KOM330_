@@ -45,7 +45,7 @@ Metode yang digunakan adalah teknik scrum, yaitu metode dengan patokan per mingg
 <table>
     <thead>
         <tr>
-            <th></th>
+            <th>No.</th>
             <th>Fitur</th>
             <th>Kegunanaan/Fungsi</th>
         </tr>
