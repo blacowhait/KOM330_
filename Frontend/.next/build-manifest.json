@@ -25,10 +25,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/spj": [
+    "/rab/upload": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/spj.js"
+      "static/chunks/pages/rab/upload.js"
     ]
   },
   "ampFirstPages": []

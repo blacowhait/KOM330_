@@ -1,20 +1,19 @@
 import { Fragment } from "react";
 import Header from "../../components/Navbar";
-import Cookies from "universal-cookie";
+import * as cookie from "cookie";
 import Link from "next/link";
 
-function UploadFile() {
+function UploadFile({ tkn, dept }) {
   const send = async (e) => {
     e.preventDefault();
     let form = new FormData();
     form.append("spjFile", document.getElementById("file").files[0]);
     form.append("name", e.target.name.value);
 
-    let ck = new Cookies();
     const resp = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + `home/spj/add`, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${ck.get("token")}`,
+        Authorization: `Bearer ${tkn}`,
       },
       body: form,
     });
@@ -29,7 +28,7 @@ function UploadFile() {
   return (
     <Fragment>
       <nav>
-        <Header title="Upload File SPJ" />
+        <Header title="Upload File SPJ" dept={dept} />
       </nav>
       <div className=" h-screen bg-white-2300 flex flex-row justify-evenly items-center pt-40">
         <div className="flex flex-col justify-center items-center bg-gray-300 w-8/12 h-3/6 p-3 rounded-lg drop-shadow-lg align-top self-start">
@@ -59,5 +58,16 @@ function UploadFile() {
     </Fragment>
   );
 }
+export async function getServerSideProps(context) {
+  console.log("Pre-Renders");
+  // fetch departement from cookies
+  const ck = cookie.parse(context.req.headers.cookie);
+  const user = JSON.parse(ck.user);
+  const tkn = ck.token;
+  const dept = user.dept;
 
+  return {
+    props: { tkn, dept },
+  };
+}
 export default UploadFile;
