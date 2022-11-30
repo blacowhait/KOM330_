@@ -79,3 +79,10 @@ Metode yang digunakan adalah teknik scrum, yaitu metode dengan patokan per mingg
     
 </table>
 
+## Kendala
+
+- Page yang ada belum memenuhi semua requirement yang sudah ditentukan di awal
+- Endpoint yang sudah dibuat masih terdapat penyesuaian
+- Progress yang ada tidak sesuai dengan jadwal yang ditentukan
+- Beberapa fitur yang dikembangkan memiliki display error tetapi masih bekerja sesuai dengan yang diharapkan
+- Banyak penyesuain yang harus dilakukan
