@@ -58,7 +58,7 @@ function Record({ data, ck, dept, data2, data3 }) {
                 return(<td>total pemasukan {data3.pemasukan}</td>);
               })}
               <td>
-                <Link href="/record/add">
+                <Link href="/cashflow/add">
                   <button className="bg-gray-500 px-2 text-white">&#43;</button>
                 </Link>
               </td>
@@ -97,7 +97,7 @@ function Record({ data, ck, dept, data2, data3 }) {
                 return(<td>total pengeluaran {data3.pengeluaran}</td>);
               })}
               <td>
-                <Link href="/record/add">
+                <Link href="/cashflow/add">
                   <button className="bg-gray-500 px-2 text-white">&#43;</button>
                 </Link>
               </td>
