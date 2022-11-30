@@ -42,7 +42,7 @@ function UploadFile() {
             </div>
             <div>
               <label for="file">Upload File</label> <br></br>
-              <input id="file" type="file" name="file" accept="" required autoFocus />
+              <input id="file" type="file" name="file" required autoFocus />
             </div>
             <div>
               <button type="submit" className="bg-blue-500 hover:bg-blue-600 active:bg-blue-700 focus:outline-none focus:ring mr-10 px-6 py-2 rounded-lg">

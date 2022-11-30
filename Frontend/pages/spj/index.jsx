@@ -26,8 +26,8 @@ function Spj() {
           </thead>
           <tbody className="text-center align-top self-start">
             {data.map((data, index) => {
+              setDate(null);
               setDate(new Date(`${data.createdAt}`));
-              console.log(date.toLocaleDateString());
               return (
                 <tr key={index}>
                   <td>{index + 1}</td>
