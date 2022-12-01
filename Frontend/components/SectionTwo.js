@@ -4,12 +4,12 @@ import Cookies from "universal-cookie";
 const ck = new Cookies();
 
 export const SectionTwo = () => {
-  const router = useRouter();
   const setDept = (dept) => {
+    ck.remove("dept");
     ck.set("dept", dept);
     alert(`Departemen ` + dept + ` dipilih!`);
   };
-  const deptr = ["psdm", "medbrand", "imbang", "dpor", "sainpres", "bismit", "ekris", "bph"];
+  const deptr = ["psdm", "medbrand", "imbang", "dpor", "sainpres", "bismit", "ekris"];
   return (
     <div className="flex flex-row justify-center w-full h-full my-5">
       {deptr.map((data) => (

@@ -9,6 +9,8 @@ const { auth } = require("../middleware")
 
 router.post("/add", auth.checkToken, auth.isDiv, validateBody(schemas.inputRecord), handler.Catcher(RecordController.inputRecord));
 router.get("/show", auth.checkToken, auth.isDiv, handler.Catcher(RecordController.showRecord));
+router.get("/showPlus", auth.checkToken, auth.isDiv, handler.Catcher(RecordController.showRecordPlus));
+router.get("/showMinus", auth.checkToken, auth.isDiv, handler.Catcher(RecordController.showRecordMinus));
 router.get("/info", auth.checkToken, auth.isDiv, handler.Catcher(RecordController.showInfo));
 router.get("/get/:dept", auth.checkToken, auth.isPst, handler.Catcher(RecordController.getDept));
 

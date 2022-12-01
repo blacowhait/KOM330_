@@ -54,7 +54,7 @@ function Spj({ data, ck, dept }) {
         ) : (
           ""
         )}
-        <section className="bg-gray-100 w-2/3 h-3/6 p-3 rounded-lg drop-shadow-lg">
+        <section className="bg-gray-100 w-2/3 h-auto p-3 rounded-lg drop-shadow-lg ">
           <table className="w-full h-auto">
             <thead>
               <tr>

@@ -28,7 +28,7 @@ function UploadFile({ tkn, dept }) {
   return (
     <Fragment>
       <nav>
-        <Header title="Upload File SPJ" dept={dept} />
+        <Header title="Upload File RAB" dept={dept} />
       </nav>
       <div className=" h-screen bg-white-2300 flex flex-row justify-evenly items-center pt-40">
         <div className="flex flex-col justify-center items-center bg-gray-300 w-8/12 h-3/6 p-3 rounded-lg drop-shadow-lg align-top self-start">
@@ -47,7 +47,7 @@ function UploadFile({ tkn, dept }) {
               <button type="submit" className="bg-blue-500 hover:bg-blue-600 active:bg-blue-700 focus:outline-none focus:ring mr-10 px-6 py-2 rounded-lg">
                 Upload
               </button>
-              <Link href="/spj">
+              <Link href="/rab">
                 <button classame="bg-white hover:bg-white  focus:outline-none focus:ring py-2 rounded-lg px-6 py-2">Cancel</button>
               </Link>
             </div>

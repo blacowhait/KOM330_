@@ -11,11 +11,10 @@ const Header = ({ title, dept }) => {
   const router = useRouter();
 
   const logout = () => {
-    console.log("MASUK");
     cks.remove("token");
     cks.remove("user");
-    if (cks.get("dept")) cks.remove("dept");
-    if (cks.get("id")) cks.remove("id");
+    cks.remove("dept");
+    cks.remove("id");
     router.push("/auth/login");
   };
   return (

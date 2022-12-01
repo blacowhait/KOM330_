@@ -56,6 +56,36 @@ class RecordController {
 		}
 	}
 
+	static async showRecordPlus(req, res) {
+		try {
+			const div = await UserModel.findOne({ _id: req.decoded.sub }).select('dept');
+			let records = await RecordModel.find({ div: div.dept , rType: "+"});
+			console.log(div.dept)
+			return res.status(200).json({ records });
+		}
+		catch (e) {
+			return res.status(500).json({
+                success: false,
+                message: e.message
+            });
+		}
+	}
+
+	static async showRecordMinus(req, res) {
+		try {
+			const div = await UserModel.findOne({ _id: req.decoded.sub }).select('dept');
+			let records = await RecordModel.find({ div: div.dept, rType: "-" });
+			console.log(div.dept)
+			return res.status(200).json({ records });
+		}
+		catch (e) {
+			return res.status(500).json({
+                success: false,
+                message: e.message
+            });
+		}
+	}
+
 	static async showInfo(req, res) {
 		try {
 			const deptRecords = await RecordModel.find({ div: req.decoded.div });
@@ -82,16 +112,9 @@ class RecordController {
 
 			selisih = masuk - keluar;
 			data.push({
-				"label": "pemasukan",
-				"jumlah": masuk
-			})
-			data.push({
-				"label": "pengeluaran",
-				"jumlah": keluar
-			})
-			data.push({
-				"label": "selisih",
-				"jumlah": selisih
+				"pemasukan": masuk,
+				"pengeluaran": keluar,
+				"selisih": selisih
 			})
 			return res.status(200).json({ data });
 		}
