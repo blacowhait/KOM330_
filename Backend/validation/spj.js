@@ -7,7 +7,7 @@ module.exports = {
   schemas: {
     check: joi.object().keys({
       status: joi.string().required(),
-      notes: joi.string().required(),
+      comment: joi.string().required(),
     }),
     inputSpj: joi.object().keys({
       spjFile: joi.allow("", "undefined"),

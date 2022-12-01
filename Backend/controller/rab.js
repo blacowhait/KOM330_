@@ -56,10 +56,10 @@ class RabController {
 			if (!rab) {
 	            return next(createError(404, "rab not found"))
 	        }
-			let { title, notes } = req.value.body;
-			rab.title = title;
-			rab.notes = title;
-			rab.save();
+			let { status, comment } = req.value.body;
+			rab.status = status;
+			rab.comment = comment;
+			await rab.save();
 
 			return res.status(200).json({
             	success: true,

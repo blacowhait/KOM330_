@@ -54,14 +54,14 @@ class SpjController {
 			if (!spj) {
 	            return next(createError(404, "spj not found"))
 	        }
-			let { title, notes } = req.value.body;
-			spj.title = title;
-			spj.notes = title;
-			spj.save();
+			let { status, comment } = req.value.body;
+			spj.status = status;
+			spj.comment = comment;
+			await spj.save();
 
 			return res.status(200).json({
             	success: true,
-            	spj: spj.data
+            	spj: spj
             });
 		}
 		catch (e) {

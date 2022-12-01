@@ -7,7 +7,7 @@ module.exports = {
 	schemas: {
 		check: joi.object().keys({
 			status: joi.string().required(),
-			notes: joi.string().required()
+			comment: joi.string().required()
 		}),
 		inputRab: joi.object().keys({
 			rabFile: joi.allow("", "undefined"),
