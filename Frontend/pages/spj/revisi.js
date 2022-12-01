@@ -15,7 +15,7 @@ function UploadFile({ tkn, dept }) {
     const id = ck.get("id");
     const data = {
       status: e.target.status.value,
-      notes: e.target.notes.value,
+      comment: e.target.comment.value,
     };
     const resp = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + `home/spj/check/` + id, {
       method: "POST",
@@ -30,7 +30,7 @@ function UploadFile({ tkn, dept }) {
       alert("Upload Berhasil");
       ck.remove("id");
       e.target.status.value = null;
-      e.target.notes.value = null;
+      e.target.comment.value = null;
       router.push("/spj");
     } else alert(body.message);
     console.log(resp, body);
@@ -50,10 +50,10 @@ function UploadFile({ tkn, dept }) {
               <input id="status" type="text" name="status" required autoFocus />
             </div>
             <div>
-              <label for="notes" className="mx-2">
-                Notes
+              <label for="comment" className="mx-2">
+                Comment
               </label>
-              <input id="notes" type="text" name="notes" required autoFocus />
+              <input id="comment" type="text" name="comment" required autoFocus />
             </div>
             <div>
               <button type="submit" className="bg-blue-500 hover:bg-blue-600 active:bg-blue-700 focus:outline-none focus:ring mr-10 px-6 py-2 rounded-lg">

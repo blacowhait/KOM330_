@@ -48,7 +48,7 @@ function UploadFile({ tkn, dept }) {
                 Upload
               </button>
               <Link href="/rab">
-                <button classame="bg-white hover:bg-white  focus:outline-none focus:ring py-2 rounded-lg px-6 py-2">Cancel</button>
+                <button classame="bg-white hover:bg-white hover:bg-grey-600 active:bg-grey-700 focus:outline-none focus:ring py-2 rounded-lg px-6 py-2">Cancel</button>
               </Link>
             </div>
           </form>
@@ -59,9 +59,7 @@ function UploadFile({ tkn, dept }) {
   );
 }
 export async function getServerSideProps(context) {
-  console.log("Pre-Renders");
   // fetch departement from cookies
-  console.log(context.req.headers.cookie);
   const ck = cookie.parse(context.req.headers.cookie);
   const user = JSON.parse(ck.user);
   const tkn = ck.token;

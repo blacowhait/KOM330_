@@ -1,8 +1,19 @@
 {
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
-  "/_document": "pages/_document.js",
+  "/admin/give": "pages/admin/give.html",
+  "/auth/login": "pages/auth/login.html",
+  "/auth/register": "pages/auth/register.html",
+  "/cashflow/upload/[param]": "pages/cashflow/upload/[param].js",
+  "/cashflow": "pages/cashflow.js",
+  "/cashflow/addItem": "pages/cashflow/addItem.js",
+  "/": "pages/index.js",
   "/rab/upload": "pages/rab/upload.js",
   "/spj": "pages/spj.js",
-  "/": "pages/index.js"
+  "/rab/revisi": "pages/rab/revisi.js",
+  "/spj/upload": "pages/spj/upload.js",
+  "/_document": "pages/_document.js",
+  "/spj/revisi": "pages/spj/revisi.js",
+  "/rab": "pages/rab.js",
+  "/404": "pages/404.html"
 }

@@ -4,7 +4,6 @@ import Header from "../../components/Navbar";
 import * as cookie from "cookie";
 import Link from "next/link";
 import Cookies from "universal-cookie";
-import { SectionOne } from "../../components/SectionOne";
 const ck = new Cookies();
 
 function Record({ data, ck, dept, data2, data3 }) {
@@ -17,6 +16,10 @@ function Record({ data, ck, dept, data2, data3 }) {
   if (!hydrated) {
     // Returns null on first render, so the client and server match
   }
+  const format = (price) => {
+    let idr = new Intl.NumberFormat("en-EN");
+    return "Rp. " + idr.format(price) + ",-";
+  };
   return (
     <Fragment>
       <Head>
@@ -26,7 +29,7 @@ function Record({ data, ck, dept, data2, data3 }) {
       </Head>
       <Header title="Cashflow" dept={dept} />
       <main className="container flex flex-col justify-center items-center h-auto gap-20 pt-20">
-        <div className="w-2/3">
+        <div className="w-2/3 h-auto">
           <div className="flex flex-row justify-between">
             {/* Pendapatan Label */}
             <span className="w-2/3 flex justify-start self-center ">
@@ -37,15 +40,15 @@ function Record({ data, ck, dept, data2, data3 }) {
               </span>
             </span>
             <span className="self-center">
-              <Link href="/cashflow/add">
+              <Link href={`/cashflow/upload/${encodeURIComponent("+")}`}>
                 <button className="bg-gray-500 px-2 text-white">&#43;</button>
               </Link>
             </span>
           </div>
           {/* Tabel Pendapatan */}
-          <section className="bg-gray-100 h-3/6 p-3 rounded-lg drop-shadow-lg ">
+          <section className="bg-gray-100 h-auto p-3 rounded-lg drop-shadow-lg ">
             <table className="w-full h-auto">
-              <thead>
+              <thead className="border-y-2 border-gray-500">
                 <tr>
                   <th>No.</th>
                   <th>Tanggal</th>
@@ -66,17 +69,22 @@ function Record({ data, ck, dept, data2, data3 }) {
                       <td>{data.note}</td>
                       <td>{data.extraNote}</td>
                       <td>{data.quantity}</td>
-                      <td>{data.amount}</td>
-                      <td>{data.total}</td>
+                      <td>{format(data.amount)}</td>
+                      <td>{format(data.total)}</td>
                     </tr>
                   );
                 })}
-                <tr className="font-bold mt-30">
+                <tr className="font-bold mt-30 border-y-2 border-gray-500">
                   {data3.map((data3, index) => {
                     return (
                       <>
                         <td>Total Pemasukan</td>
-                        <td> {data3.pemasukan}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>{format(data3.pemasukan)}</td>
                       </>
                     );
                   })}
@@ -96,15 +104,15 @@ function Record({ data, ck, dept, data2, data3 }) {
               </span>
             </span>
             <span className="self-center">
-              <Link href="/cashflow/add">
+              <Link href={`/cashflow/upload/${encodeURIComponent("-")}`}>
                 <button className="bg-gray-500 px-2 text-white">&#43;</button>
               </Link>
             </span>
           </div>
           {/* Tabel Pengeluaran */}
           <section className="bg-gray-100 h-3/6 p-3 rounded-lg drop-shadow-lg ">
-            <table className="w-full h-auto">
-              <thead>
+            <table className="w-full h-auto ">
+              <thead className="border-y-2 border-gray-500">
                 <tr>
                   <th>No.</th>
                   <th>Tanggal</th>
@@ -125,25 +133,27 @@ function Record({ data, ck, dept, data2, data3 }) {
                       <td>{data2.note}</td>
                       <td>{data2.extraNote}</td>
                       <td>{data2.quantity}</td>
-                      <td>{data2.amount}</td>
-                      <td>{data2.total}</td>
+                      <td>{format(data2.amount)}</td>
+                      <td>{format(data2.total)}</td>
                     </tr>
                   );
                 })}
-              </tbody>
-              <tfoot>
-                <tr className="font-bold mt-30">
+                <tr className="font-bold mt-30 border-y-2 border-gray-500">
                   {data3.map((data3, index) => {
                     return (
                       <>
                         <td>Total Pengeluaran</td>
-                        <td>{data3.pengeluaran}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>{format(data3.pengeluaran)}</td>
                       </>
                     );
                   })}
-                  <td></td>
                 </tr>
-              </tfoot>
+              </tbody>
             </table>
           </section>
         </div>
@@ -152,18 +162,15 @@ function Record({ data, ck, dept, data2, data3 }) {
           <div className="flex flex-col gap-2">
             <span>
               <strong className="text-med">Pemasukan &nbsp;&nbsp;&nbsp;:&nbsp; </strong>
-              Rp {data3[0].pemasukan}
-              ,-
+              {format(data3[0].pemasukan)}
             </span>
             <span>
               <strong className="text-med">Pengeluaran &nbsp;:&nbsp; </strong>
-              Rp {data3[0].pengeluaran}
-              ,-
+              {format(data3[0].pengeluaran)}
             </span>
             <span>
               <strong className="text-med">Selisih &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp; </strong>
-              Rp {data3[0].selisih}
-              ,-
+              {format(data3[0].selisih)}
             </span>
           </div>
         </div>
@@ -175,7 +182,6 @@ function Record({ data, ck, dept, data2, data3 }) {
 }
 
 export async function getServerSideProps(context) {
-  console.log("Pre-Renders");
   // fetch departement from cookies
   const ck = cookie.parse(context.req.headers.cookie);
   const user = JSON.parse(ck.user);
@@ -211,7 +217,6 @@ export async function getServerSideProps(context) {
   });
   const tmp2 = await resp2.json();
   const data3 = tmp2.data;
-  console.log(data3);
 
   return {
     props: { data, ck, dept, data2, data3 },

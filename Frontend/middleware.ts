@@ -4,7 +4,6 @@ import { NextRequest, NextResponse } from "next/server";
 export default function middleware(req: NextRequest) {
   const uri = req.nextUrl.pathname;
   if (uri.startsWith("/auth")) {
-    console.log(req.cookies.has("token"));
     if (req.cookies.has("token")) {
       const url = req.nextUrl.clone();
       url.pathname = "/";

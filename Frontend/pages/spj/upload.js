@@ -59,7 +59,6 @@ function UploadFile({ tkn, dept }) {
   );
 }
 export async function getServerSideProps(context) {
-  console.log("Pre-Renders");
   // fetch departement from cookies
   const ck = cookie.parse(context.req.headers.cookie);
   const user = JSON.parse(ck.user);

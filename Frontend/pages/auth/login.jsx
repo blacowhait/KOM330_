@@ -63,8 +63,7 @@ function Login() {
                 <Link href="/auth/register">Sign Up</Link>
               </span>
             </div>
-
-            <input type="submit" className="w-full h-16 text-white text-2xl bg-blue-900 border-2 border-gray-300 rounded-full px-5 h-14" value="Login"></input>
+            <input type="submit" className="w-full h-16 text-white text-2xl bg-blue-900 border-2 border-gray-300 rounded-full px-5 h-14 hover:bg-blue-600 active:bg-blue-800 focus:outline-none focus:ring" value="Login"></input>
           </form>
         </div>
         <p className="font-semibold text-2xl w-3/6 mt-10 z-40 text-center">

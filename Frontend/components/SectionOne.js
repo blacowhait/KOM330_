@@ -33,6 +33,10 @@ export const SectionOne = ({ stat }) => {
       ),
     },
   ];
+  const format = (price) => {
+    let idr = new Intl.NumberFormat("en-EN");
+    return "Rp. " + idr.format(price) + ",-";
+  };
   return (
     <div className="flex flex-row justify-evenly w-full my-5 mb-20 gap-x-20">
       {data.map((data, index) => (
@@ -41,10 +45,9 @@ export const SectionOne = ({ stat }) => {
           <div className="font-medium text-xl">{data.title}</div>
           <div className=" row-span-2 flex items-center">
             <strong className="text-2xl">
-              Rp {index == 0 ? stat[0].pemasukan : ""}
-              {index == 2 ? stat[0].pengeluaran : ""}
-              {index == 1 ? stat[0].selisih : ""}
-              ,-
+              {index == 0 ? format(stat[0].pemasukan) : ""}
+              {index == 2 ? format(stat[0].pengeluaran) : ""}
+              {index == 1 ? format(stat[0].selisih) : ""}
             </strong>
           </div>
         </div>

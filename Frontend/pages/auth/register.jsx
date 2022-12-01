@@ -68,7 +68,7 @@ function Register() {
             <label for="departemen" className="w-full self-end font-semibold text-2xl">
               Departemen
             </label>
-            <label className="w-full self-end font-semibold text-sm">Silahkan isi sesuai list</label>
+            <label className="w-full self-end font-semibold text-sm">Silahkan isi sesuai list (psdm, medbrand, imbang, dpor, sainpres, bismit, ekris, bph)</label>
             <input list="dept" name="dept" required autoFocus />
             <datalist id="dept">{Depart}</datalist>
             <div className="font-semibold text-2xl mt-3">
@@ -78,7 +78,7 @@ function Register() {
               </span>
             </div>
 
-            <input type="submit" className="w-full h-16 text-white text-2xl bg-blue-900 border-2 border-gray-300 rounded-full px-5 h-14" value="Register"></input>
+            <input type="submit" className="w-full h-16 text-white text-2xl bg-blue-900 border-2 border-gray-300 rounded-full px-5 h-14 hover:bg-blue-600 active:bg-blue-800 focus:outline-none focus:ring" value="Register"></input>
           </form>
         </div>
         <embed className="w-full fixed border-4 border-red-900 mt-14 " src="/svg/register.svg"></embed>

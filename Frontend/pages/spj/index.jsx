@@ -42,25 +42,13 @@ function Spj({ data, ck, dept }) {
       </Head>
       <Header title="Kelengkapan SPJ" dept={dept} />
       <main className="container flex flex-col justify-center items-center h-screen">
-        {/* Bendum - Dept Terkait */}
-        {dept === "bph" ? (
-          <span className="w-2/3 flex justify-start self-center">
-            <span id="real" className="drop-shadow flex justify-center self-end w-auto h-12 my-2 px-5 bg-white grid rounded-xl  border border-sky-500">
-              <span id="dept" className="uppercase font-semibold self-center z-40 ">
-                {ck.dept}
-              </span>
-            </span>
-          </span>
-        ) : (
-          ""
-        )}
-        <section className="bg-gray-100 w-2/3 h-auto p-3 rounded-lg drop-shadow-lg ">
+        <section className="bg-gray-100 w-2/3 h-auto min-h-[50%] p-3 rounded-lg drop-shadow-lg ">
           <table className="w-full h-auto">
             <thead>
               <tr>
                 <th>No.</th>
                 <th>Nama Proker</th>
-                <th>Departemen</th>
+                {dept === "bph" ? <th>Departemen</th> : ""}
                 <th>Tanggal Upload</th>
                 <th>Status</th>
                 <th>Komen</th>
@@ -75,7 +63,7 @@ function Spj({ data, ck, dept }) {
                   <tr key={index}>
                     <td>{index + 1}</td>
                     <td>{data.name}</td>
-                    <td>{data.div}</td>
+                    {dept === "bph" ? <td>{data.div}</td> : ""}
                     <td>{dates.toLocaleDateString()}</td>
                     <td>{data.status}</td>
                     <td>{data.comment}</td>
@@ -118,11 +106,9 @@ export async function getServerSideProps(context) {
   const ck = cookie.parse(context.req.headers.cookie);
   const user = JSON.parse(ck.user);
   const dept = user.dept;
-
-  // if dept is
-
+  const params = dept !== "bph" ? `show` : `showAll`;
   // fetch data
-  const resp = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + `home/spj/showAll`, {
+  const resp = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + `home/spj/` + params, {
     method: "GET",
     headers: {
       Authorization: `Bearer ${ck.token}`,
@@ -130,8 +116,8 @@ export async function getServerSideProps(context) {
     },
   });
   const tmp = await resp.json();
-  const data = tmp.spj;
-
+  let data = {};
+  dept !== "bph" ? (data = tmp.spjs) : (data = tmp.spj);
   return {
     props: { data, ck, dept },
   };
