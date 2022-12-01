@@ -2,19 +2,19 @@ import React, { Fragment, useEffect } from "react";
 import { useState } from "react";
 import Link from "next/link";
 import Cookies from "universal-cookie";
+import * as cookie from "cookie";
 import { useRouter } from "next/router";
 
-const ck = new Cookies();
+const cks = new Cookies();
 
-const Header = ({ title }) => {
+const Header = ({ title, dept }) => {
   const router = useRouter();
 
-  const [user] = useState(ck.get("user"));
-
-  const open = () => {
-    console.log("MASUK");
-    ck.remove("token");
-    ck.remove("user");
+  const logout = () => {
+    cks.remove("token");
+    cks.remove("user");
+    cks.remove("dept");
+    cks.remove("id");
     router.push("/auth/login");
   };
   return (
@@ -33,12 +33,12 @@ const Header = ({ title }) => {
         <span className="w-auto flex justify-end self-center">
           <span id="clone" className="bg-red-800 w-auto h-12 my-2 px-5 absolute -mt-0.5 rounded-xl overflow-hidden">
             <span id="dept" className="uppercase font-semibold self-center text-red-800">
-              {user?.dept}
+              {dept === "bph" ? "Bendahara Umum" : dept}
             </span>
           </span>
           <span id="real" className="drop-shadow flex justify-center self-end w-auto h-12 my-2 px-5 bg-white grid rounded-xl ">
             <span id="dept" className="uppercase font-semibold self-center z-40">
-              {user?.dept}
+              {dept === "bph" ? "Bendahara Umum" : dept}
             </span>
           </span>
         </span>
@@ -53,7 +53,7 @@ const Header = ({ title }) => {
           </svg>
         </span>
         {/* Logout Button */}
-        <button onClick={open} className="w-auto flex justify-end self-center">
+        <button onClick={logout} className="w-auto flex justify-end self-center">
           <span id="real" className="drop-shadow flex justify-center self-end w-auto h-12 my-2 px-5 bg-white grid rounded-xl ">
             <span className="uppercase font-semibold self-center z-40">Logout</span>
           </span>
@@ -62,5 +62,4 @@ const Header = ({ title }) => {
     </nav>
   );
 };
-
 export default Header;

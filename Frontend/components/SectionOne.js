@@ -1,4 +1,4 @@
-export const SectionOne = () => {
+export const SectionOne = ({ stat }) => {
   const data = [
     {
       title: "Pemasukan",
@@ -40,7 +40,12 @@ export const SectionOne = () => {
           <div className="row-span-3 col-span-1 w-20 h-20 self-center mx-auto bg-white rounded-full grid justify-center items-center">{data.icon}</div>
           <div className="font-medium text-xl">{data.title}</div>
           <div className=" row-span-2 flex items-center">
-            <strong className="text-2xl">Rp 0,-</strong>
+            <strong className="text-2xl">
+              Rp {index == 0 ? stat[0].pemasukan : ""}
+              {index == 2 ? stat[0].pengeluaran : ""}
+              {index == 1 ? stat[0].selisih : ""}
+              ,-
+            </strong>
           </div>
         </div>
       ))}

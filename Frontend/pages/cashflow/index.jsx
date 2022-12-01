@@ -4,6 +4,7 @@ import Header from "../../components/Navbar";
 import * as cookie from "cookie";
 import Link from "next/link";
 import Cookies from "universal-cookie";
+import { SectionOne } from "../../components/SectionOne";
 const ck = new Cookies();
 
 function Record({ data, ck, dept, data2, data3 }) {
@@ -23,97 +24,149 @@ function Record({ data, ck, dept, data2, data3 }) {
         {/* Buat Ikon */}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
       </Head>
-      <Header title="Cashflow" role="adkesmah" />
-      <main className="container flex justify-center items-center h-screen">
-        <section className="bg-gray-100 w-2/3 h-3/6 p-3 rounded-lg drop-shadow-lg ">
-          <table className="w-full h-auto">
-          <thead>
-            <tr>
-              <th>No.</th>
-              <th>Tanggal</th>
-              <th>Nama</th>
-              <th>Detail</th>
-              <th>Quantity</th>
-              <th>Harga Satuan</th>
-              <th>Jumlah</th>
-            </tr>
-          </thead>
-          <tbody className="text-center align-top self-start">
-            {data.map((data, index) => {
-              const dates = new Date(`${data.createdAt}`);
-              return (
-                <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td>{dates.toLocaleDateString()}</td>
-                  <td>{data.note}</td>
-                  <td>{data.extraNote}</td>
-                  <td>{data.quantity}</td>
-                  <td>{data.amount}</td>
-                  <td>{data.total}</td>
+      <Header title="Cashflow" dept={dept} />
+      <main className="container flex flex-col justify-center items-center h-auto gap-20 pt-20">
+        <div className="w-2/3">
+          <div className="flex flex-row justify-between">
+            {/* Pendapatan Label */}
+            <span className="w-2/3 flex justify-start self-center ">
+              <span id="real" className="drop-shadow flex justify-center self-end w-auto h-12 my-2 px-5 bg-green-500 grid rounded-xl">
+                <span id="dept" className="uppercase font-semibold self-center z-40 ">
+                  Pendapatan
+                </span>
+              </span>
+            </span>
+            <span className="self-center">
+              <Link href="/cashflow/add">
+                <button className="bg-gray-500 px-2 text-white">&#43;</button>
+              </Link>
+            </span>
+          </div>
+          {/* Tabel Pendapatan */}
+          <section className="bg-gray-100 h-3/6 p-3 rounded-lg drop-shadow-lg ">
+            <table className="w-full h-auto">
+              <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>Tanggal</th>
+                  <th>Nama</th>
+                  <th>Detail</th>
+                  <th>Quantity</th>
+                  <th>Harga Satuan</th>
+                  <th>Jumlah</th>
                 </tr>
-              );
-            })}
-            <tr>
-              {data3.map((data3, index) => {
-                return(<td>total pemasukan {data3.pemasukan}</td>);
-              })}
-              <td>
-                <Link href="/cashflow/add">
-                  <button className="bg-gray-500 px-2 text-white">&#43;</button>
-                </Link>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <table className="w-full h-auto">
-          <thead>
-            <tr>
-              <th>No.</th>
-              <th>Tanggal</th>
-              <th>Nama</th>
-              <th>Detail</th>
-              <th>Quantity</th>
-              <th>Harga Satuan</th>
-              <th>Jumlah</th>
-            </tr>
-          </thead>
-          <tbody className="text-center align-top self-start">
-            {data2.map((data2, index) => {
-              const dates = new Date(`${data2.createdAt}`);
-              return (
-                <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td>{dates.toLocaleDateString()}</td>
-                  <td>{data2.note}</td>
-                  <td>{data2.extraNote}</td>
-                  <td>{data2.quantity}</td>
-                  <td>{data2.amount}</td>
-                  <td>{data2.total}</td>
+              </thead>
+              <tbody className="text-center align-top self-start">
+                {data.map((data, index) => {
+                  const dates = new Date(`${data.createdAt}`);
+                  return (
+                    <tr key={index}>
+                      <td>{index + 1}</td>
+                      <td>{dates.toLocaleDateString()}</td>
+                      <td>{data.note}</td>
+                      <td>{data.extraNote}</td>
+                      <td>{data.quantity}</td>
+                      <td>{data.amount}</td>
+                      <td>{data.total}</td>
+                    </tr>
+                  );
+                })}
+                <tr className="font-bold mt-30">
+                  {data3.map((data3, index) => {
+                    return (
+                      <>
+                        <td>Total Pemasukan</td>
+                        <td> {data3.pemasukan}</td>
+                      </>
+                    );
+                  })}
                 </tr>
-              );
-            })}
-            <tr>
-              {data3.map((data3, index) => {
-                return(<td>total pengeluaran {data3.pengeluaran}</td>);
-              })}
-              <td>
-                <Link href="/cashflow/add">
-                  <button className="bg-gray-500 px-2 text-white">&#43;</button>
-                </Link>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        {data3.map((data3, index) => {
-          return(<td>total pemasukan {data3.pemasukan}</td>);
-        })}
-        {data3.map((data3, index) => {
-          return(<td>total pengeluaran {data3.pengeluaran}</td>);
-        })}
-        {data3.map((data3, index) => {
-          return(<td>selisih {data3.selisih}</td>);
-        })}
-        </section>
+              </tbody>
+            </table>
+          </section>
+        </div>
+        <div className="w-full w-2/3 h-auto gap-2">
+          <div className="flex flex-row justify-between">
+            {/* Pengeluaran Label */}
+            <span className="w-2/3 flex justify-start self-center test">
+              <span id="real" className="drop-shadow flex justify-center self-end w-auto h-12 my-2 px-5 bg-red-500 grid rounded-xl">
+                <span id="dept" className="uppercase font-semibold self-center z-40 ">
+                  Pengeluaran
+                </span>
+              </span>
+            </span>
+            <span className="self-center">
+              <Link href="/cashflow/add">
+                <button className="bg-gray-500 px-2 text-white">&#43;</button>
+              </Link>
+            </span>
+          </div>
+          {/* Tabel Pengeluaran */}
+          <section className="bg-gray-100 h-3/6 p-3 rounded-lg drop-shadow-lg ">
+            <table className="w-full h-auto">
+              <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>Tanggal</th>
+                  <th>Nama</th>
+                  <th>Detail</th>
+                  <th>Quantity</th>
+                  <th>Harga Satuan</th>
+                  <th>Jumlah</th>
+                </tr>
+              </thead>
+              <tbody className="text-center align-top self-start">
+                {data2.map((data2, index) => {
+                  const dates = new Date(`${data2.createdAt}`);
+                  return (
+                    <tr key={index}>
+                      <td>{index + 1}</td>
+                      <td>{dates.toLocaleDateString()}</td>
+                      <td>{data2.note}</td>
+                      <td>{data2.extraNote}</td>
+                      <td>{data2.quantity}</td>
+                      <td>{data2.amount}</td>
+                      <td>{data2.total}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+              <tfoot>
+                <tr className="font-bold mt-30">
+                  {data3.map((data3, index) => {
+                    return (
+                      <>
+                        <td>Total Pengeluaran</td>
+                        <td>{data3.pengeluaran}</td>
+                      </>
+                    );
+                  })}
+                  <td></td>
+                </tr>
+              </tfoot>
+            </table>
+          </section>
+        </div>
+
+        <div className="flex flex-col justify-start w-2/3 my-5 mb-20 gap-x-20">
+          <div className="flex flex-col gap-2">
+            <span>
+              <strong className="text-med">Pemasukan &nbsp;&nbsp;&nbsp;:&nbsp; </strong>
+              Rp {data3[0].pemasukan}
+              ,-
+            </span>
+            <span>
+              <strong className="text-med">Pengeluaran &nbsp;:&nbsp; </strong>
+              Rp {data3[0].pengeluaran}
+              ,-
+            </span>
+            <span>
+              <strong className="text-med">Selisih &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp; </strong>
+              Rp {data3[0].selisih}
+              ,-
+            </span>
+          </div>
+        </div>
       </main>
       {/* Buat Tailwind */}
       <script src="https://cdn.tailwindcss.com"></script>
@@ -124,7 +177,6 @@ function Record({ data, ck, dept, data2, data3 }) {
 export async function getServerSideProps(context) {
   console.log("Pre-Renders");
   // fetch departement from cookies
-  console.log(context.req.headers.cookie);
   const ck = cookie.parse(context.req.headers.cookie);
   const user = JSON.parse(ck.user);
   const dept = user.dept;
@@ -150,7 +202,7 @@ export async function getServerSideProps(context) {
   const tmp1 = await resp1.json();
   const data2 = tmp1.records;
 
-const resp2 = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + `home/record/info`, {
+  const resp2 = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + `home/record/info`, {
     method: "GET",
     headers: {
       Authorization: `Bearer ${ck.token}`,
@@ -159,7 +211,7 @@ const resp2 = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + `home/record/inf
   });
   const tmp2 = await resp2.json();
   const data3 = tmp2.data;
-  console.log(data3)
+  console.log(data3);
 
   return {
     props: { data, ck, dept, data2, data3 },
