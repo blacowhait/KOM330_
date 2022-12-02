@@ -79,6 +79,9 @@ Metode yang digunakan adalah teknik scrum, yaitu metode dengan patokan per mingg
     
 </table>
 
+## Link
+- [Video Demo](https://drive.google.com/file/d/1huz0aR9L4f_X8UroQ59F5q4jhtk1lvEj/view?usp=share_link)
+
 ## Kendala
 
 - Page yang ada belum memenuhi semua requirement yang sudah ditentukan di awal
