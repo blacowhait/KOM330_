@@ -81,6 +81,8 @@ Metode yang digunakan adalah teknik scrum, yaitu metode dengan patokan per mingg
 
 ## Link
 - [Video Demo](https://drive.google.com/file/d/1huz0aR9L4f_X8UroQ59F5q4jhtk1lvEj/view?usp=share_link)
+- [Test Case](https://docs.google.com/spreadsheets/d/17xESG8Js6fhCpLXQO14Ka-mJJBMN6fcBD9H2vjmdFL4/edit#gid=1568812830)
+- [Testing Report](https://drive.google.com/drive/u/0/folders/13S4Drwb-CZZQ3bLpur37A40ocwUeVPog)
 
 ## Kendala
 
